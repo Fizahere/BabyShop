@@ -33,7 +33,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       body: myScreens[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.black,
+        selectedItemColor: Colors.greenAccent,
         unselectedItemColor: Colors.grey.shade400,
         showUnselectedLabels: true,
         currentIndex: currentIndex,

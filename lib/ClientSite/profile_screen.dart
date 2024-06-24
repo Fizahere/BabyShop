@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../Auth/Login.dart';
+
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
@@ -11,7 +13,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Text("Profile Screen"),),
+      body: LoginForm()
     );
   }
 }
