@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "88314292158",
+    "project_id": "babyshop-4ce5e",
+    "storage_bucket": "babyshop-4ce5e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:88314292158:android:69863a66fa9ca44fc77bef",
+        "android_client_info": {
+          "package_name": "com.example.baby_shop"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6N8tVVzPXQKH5wABL9w4YNR1TkRLZlVI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
