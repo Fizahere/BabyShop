@@ -21,6 +21,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
       {'name': 'Fiza', 'location': 'Karachi', 'review': 'Great product!'},
       {'name': 'Laiba', 'location': 'Karachi', 'review': 'Pretty good overall.'},
       {'name': 'Ali', 'location': 'Karachi', 'review': 'Not worth the price.'},
+      {'name': 'Ali', 'location': 'Karachi', 'review': 'Not worth the price.'},
     ];
     int reviewCount = reviews.length;
 

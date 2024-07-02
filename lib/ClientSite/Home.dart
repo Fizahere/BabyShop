@@ -4,6 +4,8 @@ import 'package:baby_shop/ClientSite/product_detail.dart';
 import 'package:baby_shop/ClientSite/profile_screen.dart';
 import 'package:flutter/material.dart';
 
+import 'UserInfo.dart';
+
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -25,7 +27,7 @@ class _HomeState extends State<Home> {
     const HomeScreen(),
     const ProductDetailScreen(),
     const CartScreen(),
-    const ProfileScreen()
+    const UserInfo()
   ];
 
   @override
