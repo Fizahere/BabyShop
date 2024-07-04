@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: ProductDetailScreen(),
+      home: Home(),
     );
   }
 }

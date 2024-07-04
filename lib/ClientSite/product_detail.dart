@@ -14,8 +14,16 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     'images/Slider2.jpg',
     'images/Slider3.jpg',
   ];
+
   @override
   Widget build(BuildContext context) {
+    List reviews = [
+      {'name': 'Fiza', 'location': 'Karachi', 'review': 'Great product!'},
+      {'name': 'Laiba', 'location': 'Karachi', 'review': 'Pretty good overall.'},
+      {'name': 'Ali', 'location': 'Karachi', 'review': 'Not worth the price.'},
+    ];
+    int reviewCount = reviews.length;
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
@@ -35,7 +43,6 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 ),
                 // color: Colors.red,
               )),
-
                   options: CarouselOptions(
                     height: 300,
                     viewportFraction: 1
@@ -51,76 +58,45 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               SizedBox(height: 10,),
               Text('Strongest matches. characterization, confession, definition, depiction, detail, explanation, information, narration, narrative, picture, portrayal, report, sketch, statement, story, summary, tale, version.'
                 ,style: TextStyle(fontSize: 12,),),
+              SizedBox(height: 20,),
+              Center(
+                child: Text('Reviews ($reviewCount)'
+                  ,style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold),),
+              ),
               SizedBox(height: 10,),
-              Text('Reviews (03)'
-                ,style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold),),
-              SizedBox(height: 10,),
-            Container(
-        decoration: BoxDecoration(border: Border(
-          bottom: BorderSide(
-            color: Colors.black,
-            width: 1.0,
-          ),
-        )),
-        child: ListTile(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text('Fiza',style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold),),
-            Text('Karachi',style: TextStyle(fontSize: 14),),
-          ],
-        ),
-        subtitle: Row(
-        children: [
-        Expanded(
-        child: Text('yone know how to use BorderSide with BorderRadiu'),
-        ),
-              ],),),
-            ),
-              Container(
-                decoration: BoxDecoration(border: Border(
-                  bottom: BorderSide(
-                    color: Colors.black,
-                    width: 1.0,
+              ...reviews.map((review) => Container(
+                decoration: BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(
+                      color: Colors.black,
+                      width: 1.0,
+                    ),
                   ),
-                )),
+                ),
                 child: ListTile(
                   title: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('Laiba',style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold),),
-                      Text('Karachi',style: TextStyle(fontSize: 14),),
+                      Text(
+                        review['name']!,
+                        style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        review['location']!,
+                        style: TextStyle(fontSize: 14),
+                      ),
                     ],
                   ),
                   subtitle: Row(
                     children: [
                       Expanded(
-                        child: Text('yone know how to use BorderSide with BorderRadiu'),
+                        child: Text(review['review']!),
                       ),
-                    ],),),
-              ),
-              Container(
-                decoration: BoxDecoration(border: Border(
-                  bottom: BorderSide(
-                    color: Colors.black,
-                    width: 1.0,
-                  ),
-                )),
-                child: ListTile(
-                  title: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('Ali',style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold),),
-                      Text('Karachi',style: TextStyle(fontSize: 14),),
                     ],
                   ),
-                  subtitle: Row(
-                    children: [
-                      Expanded(
-                        child: Text('yone know how to use BorderSide with BorderRadiu'),
-                      ),
-                    ],),),
-              ),
+                ),
+              )).toList(),
+
             ],
           ),
         ),
