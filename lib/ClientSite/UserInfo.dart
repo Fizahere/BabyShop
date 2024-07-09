@@ -31,7 +31,7 @@ class _UserInfoState extends State<UserInfo> {
         "Payment" : defaulVal
       });
       Navigator.push(context,MaterialPageRoute(builder:(context)=>SignUpForm()));
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Account Created"))); // stf
+      // ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Account Created"))); // stf
     } catch(e){
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.toString())));
     }

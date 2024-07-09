@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import '../ClientSite/product_detail.dart';
 import '../components/buttons.dart';
 import '../components/loader.dart';
 import './Register.dart';
@@ -71,6 +72,7 @@ class _LoginFormState extends State<LoginForm> {
                             await FirebaseAuth.instance.signInWithEmailAndPassword(
                                 email: u_email, password: u_password);
                             signupLoading=false;
+                            Navigator.push(context,MaterialPageRoute(builder:(context)=>ProductDetailScreen()));
                             ScaffoldMessenger.of(context as BuildContext).showSnackBar(
                               SnackBar(
                                 content: Text('logged in'),
