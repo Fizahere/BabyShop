@@ -1,6 +1,11 @@
+import 'dart:async';
+
+import 'package:baby_shop/Auth/Login.dart';
 import 'package:baby_shop/ClientSite/Home.dart';
+import 'package:baby_shop/ClientSite/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'ClientSite/product_detail.dart';
 import 'firebase_options.dart';
 
@@ -22,7 +27,45 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: ProductDetailScreen(),
+      home: const SplashScreen(),
+    );
+  }
+}
+
+
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  String userEmail = "";
+
+  Future getUserData()async{
+    SharedPreferences userCred = await SharedPreferences.getInstance();
+    var uEmail = userCred.getString("email");
+    return uEmail;
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    getUserData().then((value) {
+      if(value != null){
+        Timer(const Duration(milliseconds: 2000), () => Navigator.push(context, MaterialPageRoute(builder: (context) => const Home(),)));
+      }
+      else{
+        Timer(const Duration(milliseconds: 2000), () => Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginForm(),)));
+      }
+    },);
+    super.initState();
+  }
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      body: Center(child: Text("Replace this text with Splash Image"),),
     );
   }
 }

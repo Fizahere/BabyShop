@@ -1,6 +1,9 @@
+import 'package:baby_shop/Auth/Login.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../components/grid.dart';
 
@@ -20,16 +23,48 @@ List sliderImages=[
 
 List tabs = [ "Clothing", "Toys", "Baby food", "Diapers","Care Products"];
 int current = 0;
-  @override
+
+String userEmail = "";
+
+Future getUserData()async{
+  SharedPreferences userCred = await SharedPreferences.getInstance();
+  var uEmail = userCred.getString("email");
+  return uEmail;
+}
+
+@override
+  void initState() {
+    // TODO: implement initState
+  getUserData().then((value) {
+    setState(() {
+      userEmail = value;
+    });
+  });  
+  super.initState();
+  }
+
+
+@override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Image.asset('images/logo.png',height: 150,width: 150,),),
+      appBar: AppBar(
+        title: Text(userEmail),
+      automaticallyImplyLeading: false,
+       actions: [
+         IconButton(onPressed: ()async{
+           await FirebaseAuth.instance.signOut();
+           SharedPreferences userCred = await SharedPreferences.getInstance();
+           userCred.clear();
+           Navigator.push(context,  MaterialPageRoute(builder: (context) => const LoginForm(),));
+         }, icon: const Icon(Icons.logout))
+       ],
+      ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CarouselSlider(items: List.generate(sliderImages.length, (index) => Container(
-            margin: EdgeInsets.symmetric(horizontal: 2),
+            margin: const EdgeInsets.symmetric(horizontal: 2),
               height: 180,
               width: double.infinity,
               decoration: BoxDecoration(
@@ -48,7 +83,7 @@ int current = 0;
                   enlargeCenterPage: true,
                 )),
         
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
             
             Container(
               height: 30,
@@ -63,8 +98,8 @@ int current = 0;
                     });
                   },
                   child: Container(
-                    margin: EdgeInsets.symmetric(horizontal: 8),
-                    padding: EdgeInsets.all(6.0),
+                    margin: const EdgeInsets.symmetric(horizontal: 8),
+                    padding: const EdgeInsets.all(6.0),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       border:
@@ -75,7 +110,7 @@ int current = 0;
                 );
               },)),
             ),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
             Grid(),
           ],
         ),

@@ -1,5 +1,7 @@
+import 'package:baby_shop/ClientSite/Home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../ClientSite/product_detail.dart';
 import '../components/buttons.dart';
 import '../components/loader.dart';
@@ -71,8 +73,10 @@ class _LoginFormState extends State<LoginForm> {
                             signupLoading=true;
                             await FirebaseAuth.instance.signInWithEmailAndPassword(
                                 email: u_email, password: u_password);
+                            SharedPreferences userCred = await SharedPreferences.getInstance();
+                            userCred.setString("email", userEmail.text);
                             signupLoading=false;
-                            Navigator.push(context,MaterialPageRoute(builder:(context)=>ProductDetailScreen()));
+                            Navigator.push(context,MaterialPageRoute(builder:(context)=>Home()));
                             ScaffoldMessenger.of(context as BuildContext).showSnackBar(
                               SnackBar(
                                 content: Text('logged in'),

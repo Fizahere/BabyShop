@@ -18,7 +18,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     'images/Slider3.jpg',
   ];
   int count=1;
-int price=70;
+  double price=70.0;
+  double totalPrice=70.0;
   @override
   Widget build(BuildContext context) {
     List reviews = [
@@ -65,7 +66,8 @@ int price=70;
                       ElevatedButton(onPressed: (){
                         setState(() {
                           count+=1;
-                          price*=count;
+                          totalPrice=price*count;
+                          // price*=count;
                         });
                       }, child: Text(
                         '+',
@@ -75,7 +77,8 @@ int price=70;
                         setState(() {
                           if(count>1){
                             count-=1;
-                            price*=count;
+                            totalPrice=price*count;
+
                           }
                          else{
                           count==1;
