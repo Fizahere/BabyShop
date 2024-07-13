@@ -37,7 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.6
   firebase_auth:
   firebase_core:
-  cloud_firestore:
+  cloud_firestore: ^5.1.0
   flutter_carousel_widget:
   carousel_slider:
   image_card:

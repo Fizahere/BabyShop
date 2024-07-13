@@ -89,7 +89,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       ))
                     ],
                   ),
-                  Text('\$ $price',style: TextStyle(fontSize: 15,color: Colors.green),),
+                  Text('\$ $totalPrice',style: TextStyle(fontSize: 15,color: Colors.green),),
                 ],
               ),
               SizedBox(height: 20,),

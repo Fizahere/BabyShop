@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../ClientSite/product_detail.dart';
+import '../Dashboard/admin_home.dart';
 import '../components/buttons.dart';
 import '../components/loader.dart';
 import './Register.dart';
@@ -75,8 +76,13 @@ class _LoginFormState extends State<LoginForm> {
                                 email: u_email, password: u_password);
                             SharedPreferences userCred = await SharedPreferences.getInstance();
                             userCred.setString("email", userEmail.text);
+                            if(u_email=='admin@gmail.com'){
+                              Navigator.push(context,MaterialPageRoute(builder:(context)=>AdminHome()));
+                            }
+                            else{
+                              Navigator.push(context,MaterialPageRoute(builder:(context)=>Home()));
+                            }
                             signupLoading=false;
-                            Navigator.push(context,MaterialPageRoute(builder:(context)=>Home()));
                             ScaffoldMessenger.of(context as BuildContext).showSnackBar(
                               SnackBar(
                                 content: Text('logged in'),

@@ -27,10 +27,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.macOS:
         return macos;
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-              'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return windows;
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -44,38 +41,51 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDamJ7m8dY2mdNE3WZcV6KEmxvZolP4cmg',
-    appId: '1:530739339374:web:e757ed5ada126f11a1067f',
-    messagingSenderId: '530739339374',
+    apiKey: 'AIzaSyCBrLBnpYK2S15HMzd1-iXxS4MmOp5Hyz4',
+    appId: '1:88314292158:web:9345879a2ca0d269c77bef',
+    messagingSenderId: '88314292158',
     projectId: 'babyshop-4ce5e',
-    authDomain: 'flutterproject-325f0.firebaseapp.com',
-    storageBucket: 'flutterproject-325f0.appspot.com',
-    measurementId: 'G-3EG1FMSD96',
+    authDomain: 'babyshop-4ce5e.firebaseapp.com',
+    storageBucket: 'babyshop-4ce5e.appspot.com',
+    measurementId: 'G-4JSH3MDYWM',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDTR1qNrAku4k_E_biOLnTP4Sg69Zyd_60',
-    appId: '1:530739339374:android:e0fec4aabdd12a90a1067f',
-    messagingSenderId: '530739339374',
+    apiKey: 'AIzaSyB6N8tVVzPXQKH5wABL9w4YNR1TkRLZlVI',
+    appId: '1:88314292158:android:69863a66fa9ca44fc77bef',
+    messagingSenderId: '88314292158',
     projectId: 'babyshop-4ce5e',
-    storageBucket: 'flutterproject-325f0.appspot.com',
+    storageBucket: 'babyshop-4ce5e.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBun7pOKNVEsWCbH6noERvB1WpaRHJlTWc',
-    appId: '1:530739339374:ios:708053a37edf84c8a1067f',
-    messagingSenderId: '530739339374',
+    apiKey: 'AIzaSyDeNvFXkeMKNU-ede0D63aICpmTZKAJv0I',
+    appId: '1:88314292158:ios:9e547c6d6548716dc77bef',
+    messagingSenderId: '88314292158',
     projectId: 'babyshop-4ce5e',
-    storageBucket: 'flutterproject-325f0.appspot.com',
-    iosBundleId: 'com.example.fizaApp',
+    storageBucket: 'babyshop-4ce5e.appspot.com',
+    iosClientId: '88314292158-akgvb3l624rhsqmhn49pe0j9oann66tf.apps.googleusercontent.com',
+    iosBundleId: 'com.example.babyShop',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyBun7pOKNVEsWCbH6noERvB1WpaRHJlTWc',
-    appId: '1:530739339374:ios:6702e22aabb584dda1067f',
-    messagingSenderId: '530739339374',
+    apiKey: 'AIzaSyDeNvFXkeMKNU-ede0D63aICpmTZKAJv0I',
+    appId: '1:88314292158:ios:9e547c6d6548716dc77bef',
+    messagingSenderId: '88314292158',
     projectId: 'babyshop-4ce5e',
-    storageBucket: 'flutterproject-325f0.appspot.com',
-    iosBundleId: 'com.example.fizaApp.RunnerTests',
+    storageBucket: 'babyshop-4ce5e.appspot.com',
+    iosClientId: '88314292158-akgvb3l624rhsqmhn49pe0j9oann66tf.apps.googleusercontent.com',
+    iosBundleId: 'com.example.babyShop',
   );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyCBrLBnpYK2S15HMzd1-iXxS4MmOp5Hyz4',
+    appId: '1:88314292158:web:e3fe7293cc262b7ac77bef',
+    messagingSenderId: '88314292158',
+    projectId: 'babyshop-4ce5e',
+    authDomain: 'babyshop-4ce5e.firebaseapp.com',
+    storageBucket: 'babyshop-4ce5e.appspot.com',
+    measurementId: 'G-2W4HJ57GNX',
+  );
+
 }

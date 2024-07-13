@@ -12,7 +12,12 @@
           "package_name": "com.example.baby_shop"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "88314292158-rk816ropn4fk218h9fp228fbu8s5sula.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyB6N8tVVzPXQKH5wABL9w4YNR1TkRLZlVI"
@@ -20,7 +25,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "88314292158-rk816ropn4fk218h9fp228fbu8s5sula.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "88314292158-akgvb3l624rhsqmhn49pe0j9oann66tf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.babyShop"
+              }
+            }
+          ]
         }
       }
     }

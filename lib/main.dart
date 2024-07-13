@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'ClientSite/product_detail.dart';
+import 'Dashboard/product.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -57,7 +58,7 @@ class _SplashScreenState extends State<SplashScreen> {
         Timer(const Duration(milliseconds: 2000), () => Navigator.push(context, MaterialPageRoute(builder: (context) => const Home(),)));
       }
       else{
-        Timer(const Duration(milliseconds: 2000), () => Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginForm(),)));
+        Timer(const Duration(milliseconds: 2000), () => Navigator.push(context, MaterialPageRoute(builder: (context) => const Product(),)));
       }
     },);
     super.initState();
