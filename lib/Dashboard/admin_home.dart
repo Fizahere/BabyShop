@@ -1,6 +1,6 @@
-import 'package:baby_shop/ClientSite/cart_screen.dart';
-import 'package:baby_shop/ClientSite/product_detail.dart';
-import 'package:baby_shop/Dashboard/product.dart';
+import 'package:baby_shop/Dashboard/admin_profile.dart';
+import 'package:baby_shop/Dashboard/chart.dart';
+import 'package:baby_shop/Dashboard/product.dart' as productsData;
 import 'package:baby_shop/Dashboard/users.dart';
 import 'package:flutter/material.dart';
 import '../ClientSite/UserInfo.dart';
@@ -23,10 +23,10 @@ class _AdminHomeState extends State<AdminHome> {
   }
 
   List myScreens = <Widget>[
+    ProductsUsersChart(),
     const Users(),
-    const Product(),
-    const CartScreen(),
-    const UserInfo()
+    const productsData.Product(),
+    const AdminProfile(),
   ];
 
   @override
@@ -41,8 +41,8 @@ class _AdminHomeState extends State<AdminHome> {
         onTap: pageShifter,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home),label: "Home"),
-          BottomNavigationBarItem(icon: Icon(Icons.category),label: "Users"),
-          BottomNavigationBarItem(icon: Icon(Icons.shopping_cart),label: "Product"),
+          BottomNavigationBarItem(icon: Icon(Icons.people),label: "Users"),
+          BottomNavigationBarItem(icon: Icon(Icons.category),label: "Product"),
           BottomNavigationBarItem(icon: Icon(Icons.person),label: "Profile"),
         ],
       ),

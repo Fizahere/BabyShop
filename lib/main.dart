@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:baby_shop/Auth/Login.dart';
 import 'package:baby_shop/ClientSite/Home.dart';
 import 'package:baby_shop/ClientSite/home_screen.dart';
+import 'package:baby_shop/Dashboard/admin_home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -55,11 +56,14 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     // TODO: implement initState
     getUserData().then((value) {
-      if(value != null){
+      if(value =='admin@gmail.com'){
+        Timer(const Duration(milliseconds: 2000), () => Navigator.push(context, MaterialPageRoute(builder: (context) => const AdminHome(),)));
+      }
+     else if(value !='admin@gmail.com'&& value!=null){
         Timer(const Duration(milliseconds: 2000), () => Navigator.push(context, MaterialPageRoute(builder: (context) => const Home(),)));
       }
       else{
-        Timer(const Duration(milliseconds: 2000), () => Navigator.push(context, MaterialPageRoute(builder: (context) => const Product(),)));
+        Timer(const Duration(milliseconds: 2000), () => Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginForm(),)));
       }
     },);
     super.initState();
