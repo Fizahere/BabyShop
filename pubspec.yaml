@@ -41,8 +41,10 @@ dependencies:
   flutter_carousel_widget:
   carousel_slider:
   image_card:
-  uuid:
+  uuid: ^4.4.2
   shared_preferences:
+  firebase_storage: ^12.1.1
+  image_picker: ^1.1.2
 
 dev_dependencies:
   flutter_test:
