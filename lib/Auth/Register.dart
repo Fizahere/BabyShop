@@ -92,15 +92,13 @@ class _SignUpFormState extends State<SignUpForm> {
                           backgroundColor: MaterialStateProperty.all<Color>(Colors.greenAccent),
                         ),
                       ),
-                      Text('or',),
-                      ButtonUtils.googleButton(),
                       SizedBox(height: 5,),
                       Text('Already have an account?',),
                       GestureDetector(
                           onTap:(){
                             Navigator.push(context,MaterialPageRoute(builder:(context)=>LoginForm()));
                           },
-                          child:Text('Login')
+                          child:Text('Login',style:TextStyle(color:Colors.blue))
                       )
                     ],
                   ),

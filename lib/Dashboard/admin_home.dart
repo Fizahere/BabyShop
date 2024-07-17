@@ -34,7 +34,7 @@ class _AdminHomeState extends State<AdminHome> {
     return Scaffold(
       body: myScreens[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.greenAccent,
+        selectedItemColor: Colors.deepPurpleAccent,
         unselectedItemColor: Colors.grey.shade400,
         showUnselectedLabels: true,
         currentIndex: currentIndex,

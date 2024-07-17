@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uuid/uuid.dart';
 import '../Auth/Register.dart';
 
@@ -30,6 +31,8 @@ class _UserInfoState extends State<UserInfo> {
         "Address" : address.text,
         "Payment" : defaulVal
       });
+      SharedPreferences userCred = await SharedPreferences.getInstance();
+      userCred.setString("userId", UserId);
       Navigator.push(context,MaterialPageRoute(builder:(context)=>SignUpForm()));
       // ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Account Created"))); // stf
     } catch(e){

@@ -1,12 +1,11 @@
 import 'package:baby_shop/ClientSite/Home.dart';
+import 'package:baby_shop/ClientSite/UserInfo.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../ClientSite/product_detail.dart';
 import '../Dashboard/admin_home.dart';
-import '../components/buttons.dart';
 import '../components/loader.dart';
-import './Register.dart';
+import 'Register.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -115,7 +114,7 @@ GestureDetector(
   onTap:(){
     Navigator.push(context,MaterialPageRoute(builder:(context)=>SignUpForm()));
   },
-  child:Text('Signup')
+  child:Text('Signup',style: TextStyle(color: Colors.blue),)
 )
                     ],
                   ),
