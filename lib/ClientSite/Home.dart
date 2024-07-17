@@ -1,7 +1,6 @@
 import 'package:baby_shop/ClientSite/cart_screen.dart';
 import 'package:baby_shop/ClientSite/home_screen.dart';
 import 'package:baby_shop/ClientSite/product_detail.dart';
-import 'package:baby_shop/ClientSite/profile_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'UserInfo.dart';

@@ -29,7 +29,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       });
       Navigator.pop(context);
       ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("Edited"),));
+          const SnackBar(content: Text("Edited"),));
     }catch(e){
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.toString())));
     }
@@ -37,12 +37,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor:Color(0xFFF0F0F0),
+        backgroundColor:const Color(0xFFF0F0F0),
         body:StreamBuilder(
           stream: FirebaseFirestore.instance.collection("userInfo").snapshots(),
           builder: (context,snapshot){
             if(snapshot.connectionState == ConnectionState.waiting){
-              return Center(child: CircularProgressIndicator(),);
+              return const Center(child: CircularProgressIndicator(),);
             }
             if(snapshot.hasData){
               var dataLenght = snapshot.data!.docs.length;
@@ -56,10 +56,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     String Payment = snapshot.data!.docs[index]["Payment"];
                     return  Column(
                         children: [
-                          CircleAvatar(
+                          const CircleAvatar(
                             radius: 60,
                           ),
-                          SizedBox(height: 10,),
+                          const SizedBox(height: 10,),
 
                           GestureDetector(
                             onTap: () {
@@ -73,8 +73,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       child: Column(
                                         children: [
                                           Container(
-                                            padding: EdgeInsets.only(bottom: 10.0,),
-                                            decoration: BoxDecoration(
+                                            padding: const EdgeInsets.only(bottom: 10.0,),
+                                            decoration: const BoxDecoration(
                                               border: Border(
                                                 bottom: BorderSide(
                                                   color: Colors.black,
@@ -82,7 +82,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 ),
                                               ),
                                             ),
-                                            child: Text(
+                                            child: const Text(
                                               "Edit",
                                               style: TextStyle(
                                                 fontSize: 20,
@@ -91,7 +91,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                               textAlign: TextAlign.left,
                                             ),
                                           ),
-                                          SizedBox(height: 25,),
+                                          const SizedBox(height: 25,),
                                           TextFormField(
                                             controller: name,
 
@@ -99,8 +99,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                               if (val == " " || val != null) {
                                                 return "Fill the Field";
                                               }
+                                              return null;
                                             },
-                                            decoration: InputDecoration(
+                                            decoration: const InputDecoration(
                                                 hintText: "Enter Name"
                                             ),
                                           ),
@@ -111,8 +112,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                               if (val == " " || val != null) {
                                                 return "Fill the Field";
                                               }
+                                              return null;
                                             },
-                                            decoration: InputDecoration(
+                                            decoration: const InputDecoration(
                                                 hintText: "Enter Contact"
                                             ),                                      ),
 
@@ -122,27 +124,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                               if (val == " " || val != null) {
                                                 return "Fill the Field";
                                               }
+                                              return null;
                                             },
-                                            decoration: InputDecoration(
+                                            decoration: const InputDecoration(
                                                 hintText: "Enter Address"
                                             ),                                      ),
 
-                                          SizedBox(height: 20,),
+                                          const SizedBox(height: 20,),
                                           Row(
 
                                             children: [
 
-                                              Text('payment method:',
+                                              const Text('payment method:',
                                                   style:TextStyle(
                                                       fontSize: 16
                                                   )),
-                                              SizedBox(width: 4,),
+                                              const SizedBox(width: 4,),
                                               DropdownButton(
                                                   value: defaulVal,
                                                   items: values.map((value) {
                                                     return DropdownMenuItem(
-                                                      child: new Text(value),
                                                       value: value,
+                                                      child: Text(value),
                                                     );
                                                   }).toList(), onChanged: (val){
                                                 setState((){
@@ -152,30 +155,30 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                               }),
                                             ],
                                           ),
-                                          SizedBox(height: 30,),
+                                          const SizedBox(height: 30,),
                                           ElevatedButton(
                                             onPressed: () {
                                               updatedata(UserID);
                                               // addPost();
                                               // print('posted');
-                                            },child: Center(
+                                            },
+                                            style: ButtonStyle(
+                                              backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                                            ),child: const Center(
                                             child: Text(
 
                                               'Edit',
                                               style: TextStyle(color: Colors.white),
 
                                             ),
-                                          ),
-                                            style: ButtonStyle(
-                                              backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
-                                            ),)
+                                          ),)
                                         ],
                                       ),
                                     ),
                                   );
                                 });
                               });
-                              SizedBox(height: 23);
+                              const SizedBox(height: 23);
                               Row(
                                 children: [
                                   Column(
@@ -183,32 +186,32 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     children: [
                                       Row(
                                         children: [
-                                          Text("Name: ",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17),),
-                                          Text(Name,style: TextStyle(fontSize: 17)),
+                                          const Text("Name: ",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17),),
+                                          Text(Name,style: const TextStyle(fontSize: 17)),
                                         ],
                                       ),
-                                      SizedBox(height: 20,),
+                                      const SizedBox(height: 20,),
 
                                       Row(
                                         children: [
-                                          Text("Address: ",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17),),
-                                          Text(Address,style: TextStyle(fontSize: 17)),
+                                          const Text("Address: ",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17),),
+                                          Text(Address,style: const TextStyle(fontSize: 17)),
                                         ],
                                       ),
-                                      SizedBox(height: 20,),
+                                      const SizedBox(height: 20,),
 
                                       Row(
                                         children: [
-                                          Text("Contact: ",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17),),
-                                          Text(Contact,style: TextStyle(fontSize: 17)),
+                                          const Text("Contact: ",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17),),
+                                          Text(Contact,style: const TextStyle(fontSize: 17)),
                                         ],
                                       ),
-                                      SizedBox(height: 20,),
+                                      const SizedBox(height: 20,),
 
                                       Row(
                                         children: [
-                                          Text("Payment: ",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17),),
-                                          Text(Payment,style: TextStyle(fontSize: 17)),
+                                          const Text("Payment: ",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17),),
+                                          Text(Payment,style: const TextStyle(fontSize: 17)),
                                         ],
                                       ),
 
@@ -219,7 +222,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             },
                           )
                         ]);}
-              ): Center(child: Text("Nothing to show"),);
+              ): const Center(child: Text("Nothing to show"),);
 
             }
             return Container();

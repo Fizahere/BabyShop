@@ -1,5 +1,4 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'UserInfo.dart';
@@ -37,7 +36,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CarouselSlider(items: List.generate(productDetailImages.length, (index) => Container(
-                margin: EdgeInsets.symmetric(horizontal: 5),
+                margin: const EdgeInsets.symmetric(horizontal: 5),
                 // height: 300,
                 // width: double.infinity,
                 decoration: BoxDecoration(
@@ -52,12 +51,12 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     height: 300,
                     viewportFraction: 1
                   )),
-              SizedBox(height: 15,),
-              Text('Clothes',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-              SizedBox(height: 10,),
-              Text('Strongest matches. characterization, confession, definition, depiction, detail, explanation, information, narration, narrative, picture, portrayal, report, sketch, statement, story, summary, tale, version.'
+              const SizedBox(height: 15,),
+              const Text('Clothes',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+              const SizedBox(height: 10,),
+              const Text('Strongest matches. characterization, confession, definition, depiction, detail, explanation, information, narration, narrative, picture, portrayal, report, sketch, statement, story, summary, tale, version.'
                 ,style: TextStyle(fontSize: 12,),),
-              SizedBox(height: 20,),
+              const SizedBox(height: 20,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -69,7 +68,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                           totalPrice=price*count;
                           // price*=count;
                         });
-                      }, child: Text(
+                      }, child: const Text(
                         '+',
                       )),
                       Text('$count'),
@@ -84,31 +83,31 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                           count==1;
                          }
                         });
-                      }, child: Text(
+                      }, child: const Text(
                         '-',style: TextStyle(fontSize: 25),
                       ))
                     ],
                   ),
-                  Text('\$ $totalPrice',style: TextStyle(fontSize: 15,color: Colors.green),),
+                  Text('\$ $totalPrice',style: const TextStyle(fontSize: 15,color: Colors.green),),
                 ],
               ),
-              SizedBox(height: 20,),
+              const SizedBox(height: 20,),
               SizedBox(
                 width: 350,
                 child: ElevatedButton(onPressed: (){
-                  Navigator.push(context,MaterialPageRoute(builder:(context)=>UserInfo()));
-                }, child: Text('Checkout',style: TextStyle(color: Colors.white),
-                ),style: ButtonStyle(
+                  Navigator.push(context,MaterialPageRoute(builder:(context)=>const UserInfo()));
+                },style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all<Color>(Colors.blueAccent),
+                ), child: const Text('Checkout',style: TextStyle(color: Colors.white),
                 ),),
               ),
-              SizedBox(height: 20,),
-              SizedBox(height: 20,),
+              const SizedBox(height: 20,),
+              const SizedBox(height: 20,),
               Center(
                 child: Text('Reviews ($reviewCount)'
-                  ,style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold),),
+                  ,style: const TextStyle(fontSize: 17,fontWeight: FontWeight.bold),),
               ),
-              SizedBox(height: 20,),
+              const SizedBox(height: 20,),
               SizedBox(
                 width: 330,
                 height: 40,
@@ -118,19 +117,20 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     if(value == null || value.isEmpty || value == " "){
                       return "fill the field!";
                     }
+                    return null;
                   },
                   decoration: InputDecoration(
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(40)
               ),
-                    label: Text('your review..'),
-                    suffixIcon: IconButton(onPressed: (){}, icon: Icon(Icons.send))
+                    label: const Text('your review..'),
+                    suffixIcon: IconButton(onPressed: (){}, icon: const Icon(Icons.send))
                   ),
                 ),
               ),
-              SizedBox(height: 10,),
+              const SizedBox(height: 10,),
               ...reviews.map((review) => Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   border: Border(
                     bottom: BorderSide(
                       color: Colors.black,
@@ -144,11 +144,11 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     children: [
                       Text(
                         review['name']!,
-                        style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                        style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
                       ),
                       Text(
                         review['location']!,
-                        style: TextStyle(fontSize: 14),
+                        style: const TextStyle(fontSize: 14),
                       ),
                     ],
                   ),
@@ -160,7 +160,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     ],
                   ),
                 ),
-              )).toList(),
+              )),
 
             ],
           ),

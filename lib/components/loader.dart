@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class Loader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return const SizedBox(
       width: 18,
       height: 18,
       child: CircularProgressIndicator(

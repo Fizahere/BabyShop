@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 import '../Auth/Register.dart';
@@ -21,7 +20,7 @@ class _UserInfoState extends State<UserInfo> {
 
 
   void addUser()async{
-    String UserId = Uuid().v1();
+    String UserId = const Uuid().v1();
     try{
       await FirebaseFirestore.instance.collection("userInfo").doc(UserId).set({
         "PostID" : UserId,
@@ -30,7 +29,7 @@ class _UserInfoState extends State<UserInfo> {
         "Address" : address.text,
         "Payment" : defaulVal
       });
-      Navigator.push(context,MaterialPageRoute(builder:(context)=>SignUpForm()));
+      Navigator.push(context,MaterialPageRoute(builder:(context)=>const SignUpForm()));
       // ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Account Created"))); // stf
     } catch(e){
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.toString())));
@@ -41,10 +40,10 @@ class _UserInfoState extends State<UserInfo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:Color(0xFFF0F0F0),
+      backgroundColor:const Color(0xFFF0F0F0),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 75,horizontal: 35),
+          padding: const EdgeInsets.symmetric(vertical: 75,horizontal: 35),
           child: Container(
             color: Colors.white,
             child: Form(
@@ -58,59 +57,62 @@ class _UserInfoState extends State<UserInfo> {
                         controller: name,
                         validator: (value){
                           if(value == null || value.isEmpty || value == " "){
-                            return "Name is Requried";
+                            return "Name is Required";
                           }
+                          return null;
                         },
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           label: Text('Name**'),
                         ),
                       ),
-                      SizedBox(height: 20,),
+                      const SizedBox(height: 20,),
                       TextFormField(validator: (value){
                         if(value == null || value.isEmpty || value == " "){
-                          return "Contact is Requried";
+                          return "Contact is Required";
                         }
+                        return null;
                       },
                         controller: contact,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           label: Text('Phone**'),
                         ),
                       ),
-                      SizedBox(height: 20,),
+                      const SizedBox(height: 20,),
                       TextFormField(
                         controller: address,
                         validator: (value){
                           if(value == null || value.isEmpty || value == " "){
-                            return "Address is Requried";
+                            return "Address is Required";
                           }
+                          return null;
                         },
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           label: Text('Address**'),
                         ),
                       ),
-                      SizedBox(height: 20,),
+                      const SizedBox(height: 20,),
                       DropdownButton(
                           value: defaulVal,
                           items: viewers.map((value) {
                             return DropdownMenuItem(
-                              child: new Text(value),
                               value: value,
+                              child: Text(value),
                             );
                           }).toList(), onChanged: (val){
                         setState((){
                           defaulVal=val;
                         });
                         // debugPrint(defaulVal);
-                      }),                      SizedBox(height: 40,),
+                      }),                      const SizedBox(height: 40,),
 ElevatedButton(
     onPressed: (){
      if(formKey.currentState!.validate()){
        addUser();
      }
-}, child: Text('Continue',style: TextStyle(color: Colors.white),
-),style: ButtonStyle(
+},style: ButtonStyle(
 backgroundColor: MaterialStateProperty.all<Color>(Colors.blueAccent),
-                ),
+                ), child: const Text('Continue',style: TextStyle(color: Colors.white),
+),
 )
                     ],
                   ),

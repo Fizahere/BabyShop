@@ -24,7 +24,7 @@ class _ProductState extends State<Product> {
   Uint8List productImage = Uint8List(8);
 
   void addProductWithImage() async {
-    String productID = Uuid().v1();
+    String productID = const Uuid().v1();
     String productImageUrl = '';
     if (kIsWeb) {
       UploadTask uploadTask = FirebaseStorage.instance
@@ -93,7 +93,7 @@ class _ProductState extends State<Product> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Products',
+                const Text('Products',
                     style:
                     TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
                 ElevatedButton(
@@ -112,7 +112,7 @@ class _ProductState extends State<Product> {
                                     crossAxisAlignment:
                                     CrossAxisAlignment.start,
                                     children: [
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 10,
                                       ),
                                       GestureDetector(
@@ -154,7 +154,7 @@ class _ProductState extends State<Product> {
                                           backgroundImage: pImage != null
                                               ? FileImage(pImage!)
                                               : null,
-                                          child: Icon(Icons.add),
+                                          child: const Icon(Icons.add),
                                         ),
                                       ),
                                       TextFormField(
@@ -163,6 +163,7 @@ class _ProductState extends State<Product> {
                                           if (val == " " || val != null) {
                                             return "Fill the Field";
                                           }
+                                          return null;
                                         },
                                         decoration: const InputDecoration(
                                             hintText: "Name**"),
@@ -176,6 +177,7 @@ class _ProductState extends State<Product> {
                                           if (val == " " || val != null) {
                                             return "Fill the Field";
                                           }
+                                          return null;
                                         },
                                         decoration: const InputDecoration(
                                             hintText: "Price**"),
@@ -189,6 +191,7 @@ class _ProductState extends State<Product> {
                                           if (val == " " || val != null) {
                                             return "Fill the Field";
                                           }
+                                          return null;
                                         },
                                         decoration: const InputDecoration(
                                             hintText: "Description**"),
@@ -245,10 +248,10 @@ class _ProductState extends State<Product> {
                         },
                       );
                     },
-                    child: Text('Add Product'))
+                    child: const Text('Add Product'))
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             StreamBuilder(
@@ -257,7 +260,7 @@ class _ProductState extends State<Product> {
                   .snapshots(),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(child: CircularProgressIndicator());
+                  return const Center(child: CircularProgressIndicator());
                 }
                 if (snapshot.hasData) {
                   var dataLength = snapshot.data!.docs.length;
@@ -285,12 +288,12 @@ class _ProductState extends State<Product> {
                               productImage,
                               fit: BoxFit.cover,
                               errorBuilder: (context, error, stackTrace) {
-                                return Icon(Icons.error);
+                                return const Icon(Icons.error);
                               },
                               loadingBuilder: (context, child, progress) {
                                 return progress == null
                                     ? child
-                                    : Center(child: CircularProgressIndicator());
+                                    : const Center(child: CircularProgressIndicator());
                               },
                             ),
                           ),
@@ -305,7 +308,7 @@ class _ProductState extends State<Product> {
                       ? SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: DataTable(
-                      columns: [
+                      columns: const [
                         DataColumn(label: Text('ID')),
                         DataColumn(label: Text('Name')),
                         DataColumn(label: Text('Price')),
@@ -316,13 +319,13 @@ class _ProductState extends State<Product> {
                       rows: rows,
                     ),
                   )
-                      : Center(
+                      : const Center(
                     child: Text("No Products"),
                   );
                 }
 
                 if (snapshot.hasError) {
-                  return Center(
+                  return const Center(
                     child: Icon(
                       Icons.error,
                       color: Colors.red,

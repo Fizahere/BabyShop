@@ -8,7 +8,7 @@ class CustomDataTable extends StatelessWidget {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: DataTable(
-        columns: [
+        columns: const [
           DataColumn(label: Text('ID')),
           DataColumn(label: Text('Name')),
           DataColumn(label: Text('Price')),
@@ -16,7 +16,7 @@ class CustomDataTable extends StatelessWidget {
           DataColumn(label: Text('Category')),
           DataColumn(label: Text('Description')),
         ],
-        rows: [
+        rows: const [
           DataRow(cells: [
             DataCell(Text('1001')),
             DataCell(Text('Pants')),
