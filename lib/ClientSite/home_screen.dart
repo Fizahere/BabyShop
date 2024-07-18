@@ -18,9 +18,9 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
 List sliderImages=[
-  'images/Slider1.jpg',
-  'images/Slider2.jpg',
-  'images/Slider3.jpg',
+  'images/carousel1.png',
+  'images/carousel2.jpg',
+  'images/carousel3.jpg',
 ];
 
 List tabs = [ "Clothing", "Toys", "Baby food", "Diapers","Care Products"];
@@ -121,7 +121,7 @@ Future getUserData()async{
                 FirebaseFirestore.instance.collection('Products').where("Category",isEqualTo: "Category").snapshots(),
                 builder: (BuildContext context,snapshot){
                   if(snapshot.connectionState==ConnectionState.waiting){
-                    return Center(child: CircularProgressIndicator());
+                    return const Center(child: CircularProgressIndicator());
                   }
                   if(snapshot.hasData){
                     var docsLength= snapshot.data?.docs.length;
@@ -130,25 +130,25 @@ Future getUserData()async{
                         shrinkWrap: true,
                         itemBuilder: (context,index){
                           String productName=snapshot.data?.docs[index]['Name'];
-                          String productDescription=snapshot.data?.docs[index]['Description'];
-                          String productCategory=snapshot.data?.docs[index]['Category'];
+                          // String productDescription=snapshot.data?.docs[index]['Description'];
+                          // String productCategory=snapshot.data?.docs[index]['Category'];
                           String productPrice=snapshot.data?.docs[index]['Price'];
                           String productImage=snapshot.data?.docs[index]['Image'];
                           return       GridView.count(
                             shrinkWrap: true,
-                            physics: ScrollPhysics(),
+                            physics: const ScrollPhysics(),
                             crossAxisCount: 2,
                             children: List.generate(docsLength!, (index) {
                               return GestureDetector(
                                 onTap:(){
-                                  Navigator.push(context,MaterialPageRoute(builder:(context)=>ProductDetailScreen()));
+                                  Navigator.push(context,MaterialPageRoute(builder:(context)=>const ProductDetailScreen()));
                                 },
                                 child: Column(
                                   children: [
                                     Container(
                                       height: 140,
                                       width: 140,
-                                      margin: EdgeInsets.all(4),
+                                      margin: const EdgeInsets.all(4),
 
                                       child: Image.network(productImage),
                                       decoration: BoxDecoration(
@@ -159,8 +159,8 @@ Future getUserData()async{
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                       children: [
-                                        Text(productName,style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold),),
-                                        Text(productPrice,style: TextStyle(fontSize: 14,color: Colors.green),),
+                                        Text(productName,style: const TextStyle(fontSize: 14,fontWeight: FontWeight.bold),),
+                                        Text(productPrice,style: const TextStyle(fontSize: 14,color: Colors.green),),
                                       ],
                                     ),
                                   ],
@@ -169,10 +169,10 @@ Future getUserData()async{
                             }),
                           );
                         })
-                        : Center(child: Text('no products found'),);
+                        : const Center(child: Text('no products found'),);
                   };
                   if(snapshot.hasError){
-                    return Center(child: Icon(Icons.error,color: Colors.red,),);
+                    return const Center(child: Icon(Icons.error,color: Colors.red,),);
                   }
                   return Container();
                 }

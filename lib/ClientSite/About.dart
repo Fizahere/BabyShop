@@ -14,8 +14,8 @@ class _AboutState extends State<About> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(9.0),
+            const Padding(
+              padding: EdgeInsets.all(9.0),
               child: Center(
                 child: Column(
                   children: [
@@ -25,24 +25,24 @@ class _AboutState extends State<About> {
                 ),
               ),
             ),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
           Image.asset('images/carousel2.jpg'),
-            SizedBox(height: 20,),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
+            const SizedBox(height: 20,),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
               child: Text(
                 'Welcome to Baby Shop Hub, your one-stop destination for all your baby\'s needs! At Baby Shop Hub, we understand the joys and challenges of parenthood, and we strive to make your journey as smooth and enjoyable as possible.',
                 textAlign: TextAlign.center,
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
             ),
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 children: [
                   Image.asset('images/about1.jpg', height: 230,),
-                  Expanded(
+                  const Expanded(
                     child: Column(
                       children: [
                         Text('Style',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
@@ -58,12 +58,12 @@ class _AboutState extends State<About> {
                 ],
               ),
             ),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 children: [
-                  Expanded(
+                  const Expanded(
                     child: Column(
                       children: [
                         Text('Quality',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
@@ -80,7 +80,7 @@ class _AboutState extends State<About> {
                 ],
               ),
             ),
-            Text(
+            const Text(
               '© 2024 Baby Shop Hub. All rights reserved. | Made by Fiza.',
               textAlign: TextAlign.center,
               style: TextStyle(

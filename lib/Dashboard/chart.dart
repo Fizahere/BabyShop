@@ -64,23 +64,47 @@ class ProductsUsersChart extends StatelessWidget {
               ),
             );
           }
-          return const Center(
-            child: Text('Failed to fetch data'),
-          );
+
+          if(snapshot.hasError){
+            return  Center(
+              child: Text('Failed to fetch data ${snapshot.error}'),
+            );
+          }
+          return Container();
+
         },
       ),
     );
   }
 
+  // Future<Map<String, List<dynamic>>> fetchChartData() async {
+  //   QuerySnapshot productSnapshot = await FirebaseFirestore.instance.collection('Products').get();
+  //   QuerySnapshot userSnapshot = await FirebaseFirestore.instance.collection('userInfo').get();
+  //
+  //   List<Product> products = productSnapshot.docs.map((doc) => Product.fromFirestore(doc)).toList();
+  //   List<User> users = userSnapshot.docs.map((doc) => User.fromFirestore(doc)).toList();
+  //
+  //   return {'products': products, 'users': users};
+  // }
+
   Future<Map<String, List<dynamic>>> fetchChartData() async {
-    QuerySnapshot productSnapshot = await FirebaseFirestore.instance.collection('Products').get();
-    QuerySnapshot userSnapshot = await FirebaseFirestore.instance.collection('userInfo').get();
+    try {
+      QuerySnapshot productSnapshot = await FirebaseFirestore.instance.collection('Products').get();
+      QuerySnapshot userSnapshot = await FirebaseFirestore.instance.collection('userInfo').get();
 
-    List<Product> products = productSnapshot.docs.map((doc) => Product.fromFirestore(doc)).toList();
-    List<User> users = userSnapshot.docs.map((doc) => User.fromFirestore(doc)).toList();
+      List<Product> products = productSnapshot.docs.map((doc) => Product.fromFirestore(doc)).toList();
+      List<User> users = userSnapshot.docs.map((doc) => User.fromFirestore(doc)).toList();
 
-    return {'products': products, 'users': users};
+      debugPrint('Products count: ${products.length}');
+      debugPrint('Users count: ${users.length}');
+
+      return {'products': products, 'users': users};
+    } catch (e) {
+      debugPrint('Error fetching data: $e');
+      throw e;
+    }
   }
+
 }
 
 class Product {

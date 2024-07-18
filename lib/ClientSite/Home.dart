@@ -1,10 +1,9 @@
 import 'package:baby_shop/ClientSite/cart_screen.dart';
 import 'package:baby_shop/ClientSite/home_screen.dart';
-import 'package:baby_shop/ClientSite/product_detail.dart';
-import 'package:baby_shop/ClientSite/profile_screen.dart';
+import 'package:baby_shop/ClientSite/About.dart';
+import 'package:baby_shop/ClientSite/user_profile.dart';
 import 'package:flutter/material.dart';
 
-import 'UserInfo.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -25,9 +24,9 @@ class _HomeState extends State<Home> {
 
   List myScreens = <Widget>[
     const HomeScreen(),
-    const ProductDetailScreen(),
+    const About(),
     const CartScreen(),
-    const UserInfo()
+    const UserProfile()
   ];
 
   @override
@@ -42,7 +41,7 @@ class _HomeState extends State<Home> {
         onTap: pageShifter,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home),label: "Home"),
-          BottomNavigationBarItem(icon: Icon(Icons.category),label: "Product"),
+          BottomNavigationBarItem(icon: Icon(Icons.info),label: "About"),
           BottomNavigationBarItem(icon: Icon(Icons.shopping_cart),label: "Cart"),
           BottomNavigationBarItem(icon: Icon(Icons.person),label: "Profile"),
         ],
