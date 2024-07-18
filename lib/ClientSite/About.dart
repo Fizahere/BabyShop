@@ -86,6 +86,7 @@ class _AboutState extends State<About> {
               style: TextStyle(
                 fontSize: 12,
                 color: Colors.grey,
+
               ),
             )
           ],
