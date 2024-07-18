@@ -18,9 +18,9 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
 List sliderImages=[
-  'images/carousel1.png',
-  'images/carousel2.jpg',
-  'images/carousel3.jpg',
+  'images/Slider1.jpg',
+  'images/Slider2.jpg',
+  'images/Slider3.jpg',
 ];
 
 List tabs = [ "Clothing", "Toys", "Baby food", "Diapers","Care Products"];
@@ -50,13 +50,7 @@ Future getUserData()async{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Image.asset('images/logo.png',height:120),
-            Text('logout',style:TextStyle(fontSize: 18,color:Colors.red))
-          ],
-        ),
+        title: Text(userEmail),
       automaticallyImplyLeading: false,
        actions: [
          IconButton(onPressed: ()async{
@@ -64,7 +58,7 @@ Future getUserData()async{
            SharedPreferences userCred = await SharedPreferences.getInstance();
            userCred.clear();
            Navigator.push(context,  MaterialPageRoute(builder: (context) => const LoginForm(),));
-         }, icon: const Icon(Icons.logout,size: 20,color: Colors.red,))
+         }, icon: const Icon(Icons.logout))
        ],
       ),
       body: SingleChildScrollView(
@@ -121,10 +115,10 @@ Future getUserData()async{
             const SizedBox(height: 10,),
             StreamBuilder(
                 stream: current ==  0 ? FirebaseFirestore.instance.collection('Products').where("Category",isEqualTo: "Clothing").snapshots() :
-                current == 1 ? FirebaseFirestore.instance.collection('Products').where("Category",isEqualTo: "Toys").snapshots() :
-                current == 2 ? FirebaseFirestore.instance.collection('Products').where("Category",isEqualTo: "Baby Food").snapshots() :
-                current == 3 ? FirebaseFirestore.instance.collection('Products').where("Category",isEqualTo: "Diapers").snapshots() :
-                FirebaseFirestore.instance.collection('Products').where("Category",isEqualTo: "Care Products").snapshots(),
+                current == 1 ? FirebaseFirestore.instance.collection('Products').where("Category",isEqualTo: "Category").snapshots() :
+                current == 2 ? FirebaseFirestore.instance.collection('Products').where("Category",isEqualTo: "Category").snapshots() :
+                current == 3 ? FirebaseFirestore.instance.collection('Products').where("Category",isEqualTo: "Category").snapshots() :
+                FirebaseFirestore.instance.collection('Products').where("Category",isEqualTo: "Category").snapshots(),
                 builder: (BuildContext context,snapshot){
                   if(snapshot.connectionState==ConnectionState.waiting){
                     return Center(child: CircularProgressIndicator());
@@ -135,25 +129,20 @@ Future getUserData()async{
                         itemCount: docsLength,
                         shrinkWrap: true,
                         itemBuilder: (context,index){
-                          String productID=snapshot.data?.docs[index]['ProductID'];
                           String productName=snapshot.data?.docs[index]['Name'];
                           String productDescription=snapshot.data?.docs[index]['Description'];
                           String productCategory=snapshot.data?.docs[index]['Category'];
                           String productPrice=snapshot.data?.docs[index]['Price'];
                           String productImage=snapshot.data?.docs[index]['Image'];
-                          return GridView.count(
+                          return       GridView.count(
                             shrinkWrap: true,
                             physics: ScrollPhysics(),
                             crossAxisCount: 2,
                             children: List.generate(docsLength!, (index) {
                               return GestureDetector(
                                 onTap:(){
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => ProductDetailScreen(productID: productID),
-                                    ),
-                                  );                                },
+                                  Navigator.push(context,MaterialPageRoute(builder:(context)=>ProductDetailScreen()));
+                                },
                                 child: Column(
                                   children: [
                                     Container(
@@ -161,8 +150,7 @@ Future getUserData()async{
                                       width: 140,
                                       margin: EdgeInsets.all(4),
 
-                                      // child: NetworkImage(NetworkImage:productImage),
-child:                                  Image.network(productImage,height: 100,width: 100,),
+                                      child: Image.network(productImage),
                                       decoration: BoxDecoration(
                                           color: Colors.deepPurpleAccent.shade100,
                                           borderRadius: BorderRadius.circular(10)

@@ -11,7 +11,7 @@ class ProductsUsersChart extends StatelessWidget {
         future: fetchChartData(),
         builder: (context, AsyncSnapshot<Map<String, List<dynamic>>> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
           if (snapshot.hasData) {
             List<Product> products = snapshot.data!['products'] as List<Product>;
@@ -50,21 +50,21 @@ class ProductsUsersChart extends StatelessWidget {
                     style: Theme.of(context).textTheme.headline6,
                     // textAlign: TextAlign.center,
                   ),
-                  SizedBox(height: 30,),
+                  const SizedBox(height: 30,),
                   SizedBox(
                     height: 250,
                     child: charts.BarChart(
                       series,
                       animate: true,
                       barRendererDecorator: charts.BarLabelDecorator<String>(),
-                      domainAxis: charts.OrdinalAxisSpec(renderSpec: charts.SmallTickRendererSpec(labelRotation: 0)),
+                      domainAxis: const charts.OrdinalAxisSpec(renderSpec: charts.SmallTickRendererSpec(labelRotation: 0)),
                     ),
                   ),
                 ],
               ),
             );
           }
-          return Center(
+          return const Center(
             child: Text('Failed to fetch data'),
           );
         },

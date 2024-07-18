@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class Users extends StatefulWidget {
-  const Users({Key? key}) : super(key: key);
+  const Users({super.key});
 
   @override
   State<Users> createState() => _UsersState();
@@ -17,23 +17,23 @@ class _UsersState extends State<Users> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'Users',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Expanded(
               child: StreamBuilder(
                 stream: FirebaseFirestore.instance.collection("userInfo").snapshots(),
                 builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(child: CircularProgressIndicator());
+                    return const Center(child: CircularProgressIndicator());
                   }
                   if (snapshot.hasData && snapshot.data!.docs.isNotEmpty) {
                     return SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: DataTable(
-                        columns: [
+                        columns: const [
                           DataColumn(label: Text('ID')),
                           DataColumn(label: Text('Name')),
                           DataColumn(label: Text('Phone')),
@@ -59,7 +59,7 @@ class _UsersState extends State<Users> {
                       ),
                     );
                   } else {
-                    return Center(
+                    return const Center(
                       child: Text("No Users"),
                     );
                   }

@@ -1,15 +1,10 @@
 import 'dart:async';
-
 import 'package:baby_shop/Auth/Login.dart';
 import 'package:baby_shop/ClientSite/Home.dart';
-import 'package:baby_shop/ClientSite/home_screen.dart';
 import 'package:baby_shop/Dashboard/admin_home.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'ClientSite/product_detail.dart';
-import 'Dashboard/product.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -72,9 +67,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Center(child: Container(
-        child: Image.asset('images/logo.png',height: 110,),
-      )),
+      body: Center(child: Image.asset('images/logo.png',height: 110,)),
     );
   }
 }
