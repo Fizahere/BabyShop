@@ -81,7 +81,7 @@ class _AboutState extends State<About> {
               ),
             ),
             Text(
-              '© 2024 Baby Shop Hub. All rights reserved. | made by Fiza.',
+              '© 2024 Baby Shop Hub. All rights reserved. | Made by Fiza.',
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 12,
