@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uuid/uuid.dart';
 import '../Auth/Register.dart';
 
@@ -18,6 +19,24 @@ class _UserInfoState extends State<UserInfo> {
   List viewers=['Paypal','Cash on delivery'];
   dynamic defaulVal='Cash on delivery';
 
+  String uEmail = "";
+
+  Future getUserEmail()async{
+    SharedPreferences userCred = await SharedPreferences.getInstance();
+    var userEmail = userCred.getString("email");
+    return userEmail;
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    getUserEmail().then((value) {
+      setState(() {
+        uEmail = value;
+      });
+    });
+    super.initState();
+  }
 
   void addUser()async{
     String UserId = const Uuid().v1();
@@ -27,7 +46,8 @@ class _UserInfoState extends State<UserInfo> {
         "Name" : name.text,
         "Contact" : contact.text,
         "Address" : address.text,
-        "Payment" : defaulVal
+        "Payment" : defaulVal,
+        "userEmail" : uEmail
       });
 
       Navigator.push(context,MaterialPageRoute(builder:(context)=>const SignUpForm()));

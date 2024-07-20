@@ -30,7 +30,7 @@ class _UserProfileState extends State<UserProfile> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFF0F0F0),
-      body:  StreamBuilder(stream: FirebaseFirestore.instance.collection("userInfo").where("PostID",isEqualTo: "b22da200-22b6-1077-8794-899f297619c5").snapshots(), builder: (context, snapshot) {
+      body:  StreamBuilder(stream: FirebaseFirestore.instance.collection("userInfo").where("userEmail",isEqualTo: userEmail).snapshots(), builder: (context, snapshot) {
        
         if(snapshot.connectionState == ConnectionState.waiting){}
         

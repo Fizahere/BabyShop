@@ -87,7 +87,7 @@ Future getUserData()async{
         
             const SizedBox(height: 10,),
             
-            Container(
+            SizedBox(
               height: 30,
               child: Expanded(child: ListView.builder(
                 itemCount: tabs.length,
@@ -103,16 +103,17 @@ Future getUserData()async{
                     margin: const EdgeInsets.symmetric(horizontal: 8),
                     padding: const EdgeInsets.all(6.0),
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
+                      // borderRadius: BorderRadius.circular(10),
                       border:
                   Border( bottom: BorderSide(color: current == index ? Colors.black: Colors.transparent),
                     ),),
-                    child: Text(tabs[index]),
+                    child: Text(tabs[index],style: const TextStyle(color: Colors.black),),
                   ),
                 );
               },)),
             ),
             const SizedBox(height: 10,),
+
             StreamBuilder(
                 stream: current ==  0 ? FirebaseFirestore.instance.collection('Products').where("Category",isEqualTo: "Clothing").snapshots() :
                 current == 1 ? FirebaseFirestore.instance.collection('Products').where("Category",isEqualTo: "Category").snapshots() :
@@ -125,23 +126,30 @@ Future getUserData()async{
                   }
                   if(snapshot.hasData){
                     var docsLength= snapshot.data?.docs.length;
-                    return docsLength !=0 ? ListView.builder(
-                        itemCount: docsLength,
-                        shrinkWrap: true,
-                        itemBuilder: (context,index){
-                          String productName=snapshot.data?.docs[index]['Name'];
-                          // String productDescription=snapshot.data?.docs[index]['Description'];
-                          // String productCategory=snapshot.data?.docs[index]['Category'];
-                          String productPrice=snapshot.data?.docs[index]['Price'];
-                          String productImage=snapshot.data?.docs[index]['Image'];
-                          return       GridView.count(
+                    return docsLength !=0 ?
+
+                    GridView.count(
                             shrinkWrap: true,
                             physics: const ScrollPhysics(),
                             crossAxisCount: 2,
+                            scrollDirection: Axis.vertical,
                             children: List.generate(docsLength!, (index) {
+                              String productID=snapshot.data?.docs[index]['ProductID'];
+                              String productName=snapshot.data?.docs[index]['Name'];
+                              String productDescription=snapshot.data?.docs[index]['Description'];
+                              String productCategory=snapshot.data?.docs[index]['Category'];
+                              String productPrice=snapshot.data?.docs[index]['Price'];
+                              String productImage=snapshot.data?.docs[index]['Image'];
                               return GestureDetector(
                                 onTap:(){
-                                  Navigator.push(context,MaterialPageRoute(builder:(context)=>const ProductDetailScreen()));
+                                  Navigator.push(context,MaterialPageRoute(builder:(context)=>ProductDetailScreen(
+                                      pID: productID,
+                                      pName: productName,
+                                      pImage: productImage,
+                                      pDesc: productDescription,
+                                      pPrice: productPrice,
+                                    pCate: productCategory,
+                                  )));
                                 },
                                 child: Column(
                                   children: [
@@ -149,11 +157,13 @@ Future getUserData()async{
                                       height: 140,
                                       width: 140,
                                       margin: const EdgeInsets.all(4),
-
-                                      child: Image.network(productImage),
+                                      
                                       decoration: BoxDecoration(
                                           color: Colors.deepPurpleAccent.shade100,
-                                          borderRadius: BorderRadius.circular(10)
+                                          borderRadius: BorderRadius.circular(10),
+                                        image: DecorationImage(
+                                            fit: BoxFit.cover,
+                                            image: NetworkImage(productImage))
                                       ),
                                     ),
                                     Row(
@@ -167,8 +177,8 @@ Future getUserData()async{
                                 ),
                               );
                             }),
-                          );
-                        })
+                          )
+
                         : const Center(child: Text('no products found'),);
                   };
                   if(snapshot.hasError){

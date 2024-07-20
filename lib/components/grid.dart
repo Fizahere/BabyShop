@@ -19,9 +19,10 @@ class Grid extends StatelessWidget {
                     itemCount: docsLength,
                     shrinkWrap: true,
                     itemBuilder: (context,index){
+                      String productID=snapshot.data?.docs[index]['ProductID'];
                       String productName=snapshot.data?.docs[index]['Name'];
-                      // String productDescription=snapshot.data?.docs[index]['Description'];
-                      // String productCategory=snapshot.data?.docs[index]['Category'];
+                      String productDescription=snapshot.data?.docs[index]['Description'];
+                      String productCategory=snapshot.data?.docs[index]['Category'];
                       String productPrice=snapshot.data?.docs[index]['Price'];
                       String productImage=snapshot.data?.docs[index]['Image'];
                       return       GridView.count(
@@ -31,7 +32,13 @@ class Grid extends StatelessWidget {
                         children: List.generate(9, (index) {
                           return GestureDetector(
                             onTap:(){
-                              Navigator.push(context,MaterialPageRoute(builder:(context)=>const ProductDetailScreen()));
+                              Navigator.push(context,MaterialPageRoute(builder:(context)=> ProductDetailScreen(
+                                  pName: productName,
+                                  pImage: productImage,
+                                  pDesc: productDescription,
+                                  pPrice: productPrice,
+                                  pCate: productCategory,
+                                  pID: productID)));
                             },
                             child: Column(
                               children: [
