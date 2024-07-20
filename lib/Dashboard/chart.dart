@@ -33,9 +33,10 @@ class ProductsUsersChart extends StatelessWidget {
                   ChartItem('Products', productRatio),
                   ChartItem('Users', userRatio),
                 ],
+
                 domainFn: (ChartItem item, _) => item.category,
                 measureFn: (ChartItem item, _) => item.value.toInt(),
-                colorFn: (ChartItem item, _) => charts.MaterialPalette.blue.shadeDefault,
+                colorFn: (ChartItem item, _) => charts.MaterialPalette.cyan.shadeDefault,
                 labelAccessorFn: (ChartItem item, _) => '${item.value.toInt()}',
               ),
             ];
@@ -76,17 +77,6 @@ class ProductsUsersChart extends StatelessWidget {
       ),
     );
   }
-
-  // Future<Map<String, List<dynamic>>> fetchChartData() async {
-  //   QuerySnapshot productSnapshot = await FirebaseFirestore.instance.collection('Products').get();
-  //   QuerySnapshot userSnapshot = await FirebaseFirestore.instance.collection('userInfo').get();
-  //
-  //   List<Product> products = productSnapshot.docs.map((doc) => Product.fromFirestore(doc)).toList();
-  //   List<User> users = userSnapshot.docs.map((doc) => User.fromFirestore(doc)).toList();
-  //
-  //   return {'products': products, 'users': users};
-  // }
-
   Future<Map<String, List<dynamic>>> fetchChartData() async {
     try {
       QuerySnapshot productSnapshot = await FirebaseFirestore.instance.collection('Products').get();

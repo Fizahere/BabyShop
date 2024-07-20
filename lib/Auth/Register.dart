@@ -82,7 +82,7 @@ class _SignUpFormState extends State<SignUpForm> {
                           }
                         },
                         style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(Colors.greenAccent),
+                          backgroundColor: MaterialStateProperty.all<Color>(Colors.deepPurpleAccent),
                         ),
                         child: Center(
                           child: signupLoading ? Loader()
