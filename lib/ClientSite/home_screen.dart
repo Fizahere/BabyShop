@@ -116,10 +116,10 @@ Future getUserData()async{
 
             StreamBuilder(
                 stream: current ==  0 ? FirebaseFirestore.instance.collection('Products').where("Category",isEqualTo: "Clothing").snapshots() :
-                current == 1 ? FirebaseFirestore.instance.collection('Products').where("Category",isEqualTo: "Category").snapshots() :
-                current == 2 ? FirebaseFirestore.instance.collection('Products').where("Category",isEqualTo: "Category").snapshots() :
-                current == 3 ? FirebaseFirestore.instance.collection('Products').where("Category",isEqualTo: "Category").snapshots() :
-                FirebaseFirestore.instance.collection('Products').where("Category",isEqualTo: "Category").snapshots(),
+                current == 1 ? FirebaseFirestore.instance.collection('Products').where("Category",isEqualTo: "Toys").snapshots() :
+                current == 2 ? FirebaseFirestore.instance.collection('Products').where("Category",isEqualTo: "Baby Food").snapshots() :
+                current == 3 ? FirebaseFirestore.instance.collection('Products').where("Category",isEqualTo: "Diapers").snapshots() :
+                FirebaseFirestore.instance.collection('Products').where("Category",isEqualTo: "Care Products").snapshots(),
                 builder: (BuildContext context,snapshot){
                   if(snapshot.connectionState==ConnectionState.waiting){
                     return const Center(child: CircularProgressIndicator());
