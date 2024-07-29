@@ -1,0 +1,9 @@
+dashboard credentials:[
+email:'admin@gmail.com',
+password:'123456',
+],
+
+clientapp credentials:[
+email:'fiza@gmail.com',
+password:'123456',
+]
